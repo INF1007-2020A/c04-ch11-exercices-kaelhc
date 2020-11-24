@@ -21,6 +21,12 @@ class Weapon:
 
 	UNARMED_POWER = 20
 
+	def __init__(self,name,power,min_level):
+		self.__name = name
+		self.power = power
+		self.min_level = min_level
+
+
 
 class Character:
 	"""
@@ -32,6 +38,18 @@ class Character:
 	:param defense: Le niveau de défense du personnage
 	:param level: Le niveau d'expérience du personnage
 	"""
+
+	def __init__(self,name,max_hp,attack,defense,level,weapon,hp):
+		self.name = name
+		self.max_hp = max_hp
+		self.attack = attack
+		self.defense = defense
+		self.level = level
+		self.weapon = weapon
+		self.hp = hp
+
+    def compute_damage(self,other) :
+		dmg = (((((2*self.level/5)+2)*self.weapon.power*self.attack/other.defense)/50) +2 )
 
 
 def deal_damage(attacker, defender):
